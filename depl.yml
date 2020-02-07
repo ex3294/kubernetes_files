@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-depl
+  labels:
+    app: nginx-tz
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-tz
+  template:
+    metadata:
+      labels:
+        app: nginx-tz
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.7.9
+        ports:
+        - containerPort: 80
